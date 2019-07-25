@@ -28,7 +28,7 @@ C:/Users/LawlietJH/Documents/GitHub
 __Esta función devuelve un String con la ruta completa, nombre y extensión del archivo que se desea crear y guardar.__
 ```python
 from explorer import Explorer as ex
-file_name_save = ex.getSaveFileName()
+file_name_save = ex.getFileNameSave()
 print(file_name_save)
 ```
 __Resultado:__
