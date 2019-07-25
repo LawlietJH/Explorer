@@ -1,9 +1,9 @@
 
 
-# v1.2.0
+# v1.2.1
 
-import os
 from tkinter import filedialog, Tk
+import os
 
 
 Tk().withdraw()
@@ -11,40 +11,31 @@ Tk().withdraw()
 
 class Explorer():
 	
-	def GetFileName( FileTypes=[ ['Archivos de Texto','.txt'], ['Todos los Archivos','.*'] ], Titulo='', DirInicial=os.getcwd() ):
+	def getFileName(title='', file_types=[ 
+				['Archivos de Texto','.txt'], ['Todos los Archivos','.*']
+			], init_dir=os.getcwd()):
 		
-		Nombre = filedialog.askopenfile(	title		=	Titulo,
-											initialdir	=	DirInicial,
-											filetypes	=	FileTypes
-									   )
-		
-		if Nombre == None: return
-		
-		return Nombre.name
+		f_name = filedialog.askopenfile(title = title,
+										initialdir = init_dir,
+										filetypes = file_types)
+		if not f_name == None:
+			return f_name.name
 	
 	
-	def GetFolderName( Titulo='', DirInicial=os.getcwd() ):
+	def getFolderName(title='', init_dir=os.getcwd()):
 		
-		Directorio = filedialog.askdirectory(
-												initialdir	=	DirInicial,
-												title		=	Titulo
-											)
-		
-		return Directorio
+		d_path = filedialog.askdirectory(title = title, initialdir = init_dir)
+		return d_path
 	
 	
-	def GetSaveFileName( FileTypes=[ ['Archivos de Texto','.txt'], ['Todos los Archivos','.*'] ], Titulo='', DirInicial=os.getcwd() ):
+	def getFileNameSave(file_types=[
+					['Archivos de Texto','.txt'], ['Todos los Archivos','.*']
+				], title='', init_dir=os.getcwd()):
 		
-		Nombre = filedialog.asksaveasfilename(
-												title		=	Titulo,
-												initialdir	=	DirInicial,
-												filetypes	=	FileTypes
-											 )
-		
-		if Nombre == None: return
-		
-		return Nombre
-
-
+		f_name = filedialog.asksaveasfilename(title = title,
+											  initialdir = init_dir,
+											  filetypes = file_types)
+		if not f_name == None:
+			return f_name
 
 
