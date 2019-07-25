@@ -5,7 +5,7 @@
 # v1.2.2
 
 from tkinter import filedialog
-try: from tkinter import tk as Tk
+try: from Tkinter import Tk
 except: from tkinter import Tk
 import os
 
