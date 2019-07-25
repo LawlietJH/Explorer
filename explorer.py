@@ -1,8 +1,12 @@
 
+# Python 2 y 3
+# explorer.py
+# LawlietJH
+# v1.2.2
 
-# v1.2.1
-
-from tkinter import filedialog, Tk
+from tkinter import filedialog
+try: from tkinter import tk as Tk
+except: from tkinter import Tk
 import os
 
 
@@ -10,6 +14,22 @@ Tk().withdraw()
 
 
 class Explorer():
+	
+	def use():
+		print('''\n\n	Ejemplo de Uso:
+
+		from explorer import Explorer as ex
+
+		file_name = ex.getFileName()
+		print(file_name)
+
+		folder_path = ex.getFolderName()
+		print(folder_path)
+		
+		file_name_save = ex.getFileNameSave()
+		print(file_name_save)
+
+		ex.use()''')
 	
 	def getFileName(title='', file_types=[ 
 				['Archivos de Texto','.txt'], ['Todos los Archivos','.*']
