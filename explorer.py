@@ -2,15 +2,20 @@
 # Python 2 y 3
 # explorer.py
 # LawlietJH
-# v1.2.2
+# v1.2.3
 
-from tkinter import filedialog
-try: from Tkinter import Tk
-except: from tkinter import Tk
+try:
+	from Tkinter import Tk
+	from Tkinter import filedialog
+except:
+	from tkinter import Tk
+	from tkinter import filedialog
+
 import os
 
 
-Tk().withdraw()
+root = Tk()
+root.withdraw()
 
 
 class Explorer():
@@ -31,9 +36,14 @@ class Explorer():
 
 		ex.use()''')
 	
-	def getFileName(title='', file_types=[ 
+	def getFileName(title='Abrir', file_types=[ 
 				['Archivos de Texto','.txt'], ['Todos los Archivos','.*']
-			], init_dir=os.getcwd()):
+			], init_dir=os.getcwd(), encima=True):
+		
+		if encima == True:
+			root.wm_attributes('-topmost', True)
+		else:
+			root.wm_attributes('-topmost', False)
 		
 		f_name = filedialog.askopenfile(title = title,
 										initialdir = init_dir,
@@ -42,20 +52,32 @@ class Explorer():
 			return f_name.name
 	
 	
-	def getFolderName(title='', init_dir=os.getcwd()):
+	def getFolderName(title='Abrir Carpeta', init_dir=os.getcwd(), encima=True):
+		
+		if encima == True:
+			root.wm_attributes('-topmost', True)
+		else:
+			root.wm_attributes('-topmost', False)
 		
 		d_path = filedialog.askdirectory(title = title, initialdir = init_dir)
-		return d_path
+		
+		if not d_path == '':
+			return d_path
 	
 	
-	def getFileNameSave(file_types=[
+	def getFileNameSave(title='Guardar', file_types=[
 					['Archivos de Texto','.txt'], ['Todos los Archivos','.*']
-				], title='', init_dir=os.getcwd()):
+				], init_dir=os.getcwd(), encima=True):
+		
+		if encima == True:
+			root.wm_attributes('-topmost', True)
+		else:
+			root.wm_attributes('-topmost', False)
 		
 		f_name = filedialog.asksaveasfilename(title = title,
 											  initialdir = init_dir,
 											  filetypes = file_types)
-		if not f_name == None:
+		if not f_name == '':
 			return f_name
 
 
